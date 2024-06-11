@@ -1,12 +1,21 @@
 <template>
-  <div id="app">
+  <div class="h-app">
+    <h1>Fuel Calculator</h1>
     <FuelCalculator />
     <!-- <NuxtWelcome /> -->
   </div>
 </template>
 
-<style scoped lang="scss">
-  #app {
-    height: 100dvh;
+<style lang="scss">
+  .h-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    h1 {
+      color: #f0f0f0;
+      font-size: 2rem;
+      font-family: 'WorkSans', sans-serif;
+    }
   }
 </style>

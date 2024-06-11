@@ -1,16 +1,15 @@
 <template>
   <div class="fuel-calculator">
-    <h2>Fuel Calculator</h2>
     <div class="input-group">
-      <label for="distance">Distance (km):</label>
+      <label for="distance">(km):</label>
       <input type="number" id="distance" v-model="distance" />
     </div>
     <div class="input-group">
-      <label for="fuel-consumption">Average Fuel Consumption (L/100km):</label>
+      <label for="fuel-consumption">(L/100km):</label>
       <input type="number" id="fuel-consumption" v-model="fuelConsumption" />
     </div>
     <div class="input-group">
-      <label for="fuel-price">Fuel Price per Liter:</label>
+      <label for="fuel-price" class="">Price per Liter:</label>
       <input type="number" id="fuel-price" v-model="fuelPrice" />
     </div>
     <button @click="calculatePrice">Calculate</button>
@@ -43,14 +42,11 @@ export default {
 @import "../assets/css/main.css";
 
 .fuel-calculator {
-  color: var(celadon);
+  height: 100%;
+  width: 100%;
   max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.input-group {
-  margin-bottom: 10px;
+  color: #f0f0f0;
+  gap: 1rem;
 }
 
 label {
@@ -61,13 +57,21 @@ label {
 input[type="number"] {
   width: 100%;
   padding: 5px;
-  border: 1px solid #ccc;
   border-radius: 4px;
 }
 
+input {
+  background: linear-gradient(to right, #0056b3, #007bff);
+}
+
+input:focus {
+  background: linear-gradient(to right, #007bff, #0056b3);
+}
+
+
 button {
   display: block;
-  margin-top: 10px;
+  margin-top: auto;
   padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
