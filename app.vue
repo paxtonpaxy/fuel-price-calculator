@@ -1,15 +1,14 @@
-<script setup>
+<!-- <script setup>
   function themeToggle() {
     const isLight = document.body.getAttribute('theme') === 'light';
     isLight ? document.body.removeAttribute('theme') : document.body.setAttribute('theme', 'light');
   }
-</script>
+</script> -->
 
 <template>
   <div class="h-app">
     <h1>Fuel Calculator</h1>
     <FuelCalculator />
-    <button @click="themeToggle">Toggle Theme</button>
   </div>
 </template>
 

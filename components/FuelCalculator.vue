@@ -44,9 +44,9 @@
   export default {
     data() {
       return {
-        distance: Number,
-        fuelConsumption: Number,
-        fuelPrice: Number,
+        distance: 0,
+        fuelConsumption: 0,
+        fuelPrice: 0,
         price: null
       };
     },
@@ -104,10 +104,15 @@
         transform: translateX(15rem) translateY(-0.8rem);
         background: var(--primary-color);
         color: var(--dark-color);
-        border-radius: 0.5rem;
+        border-radius: 0.25rem;
         font-size: 0.7rem;
         padding: 0.2rem 0.4rem;
       }
+    }
+
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button {  
+      opacity: 0;
     }
   }
 
