@@ -7,7 +7,7 @@
 
 <template>
   <div class="h-app">
-    <h1>Fuel Calculator</h1>
+    <h1>Fuel Cost Calculator</h1>
     <FuelCalculator />
     <GoogleMaps />
   </div>
@@ -24,6 +24,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    
+    @media screen and (max-width: 500px){
+      padding: 0 1rem;
+    }
 
     h1 {
       color: #f0f0f0;
