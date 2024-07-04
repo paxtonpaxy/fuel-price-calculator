@@ -9,6 +9,7 @@
   <div class="h-app">
     <h1>Fuel Calculator</h1>
     <FuelCalculator />
+    <GoogleMaps />
   </div>
 </template>
 
@@ -27,17 +28,7 @@
     h1 {
       color: #f0f0f0;
       font-size: 2rem;
-    }
-
-    button {
-      display: block;
-      margin-top: auto;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
+      margin: 2rem 0;
     }
   }
 </style>
