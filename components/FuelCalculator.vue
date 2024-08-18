@@ -188,7 +188,7 @@
         padding: 0.2rem 0.4rem;
 
         @media screen and (min-width: 500px){
-          transform: translateX(15rem) translateY(-0.8rem);
+          transform: translateY(-0.8rem);
         }
       }
 
@@ -201,7 +201,7 @@
         padding: 0.2rem 0.4rem;
 
         @media screen and (min-width: 500px){
-          transform: translateX(15rem) translateY(-0.8rem);
+          transform: translateY(-0.8rem);
         }
       }
     }
