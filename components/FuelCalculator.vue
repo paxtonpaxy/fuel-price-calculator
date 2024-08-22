@@ -220,6 +220,11 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: 300ms;
+
+    &:hover {
+      background-color: #2e93ff;
+    }
   }
 
   .result {

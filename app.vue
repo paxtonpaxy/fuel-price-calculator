@@ -31,7 +31,7 @@
     }
 
     h1 {
-      color: #f0f0f0;
+      color: #7e7e7ea9;
       font-size: 2rem;
       margin: 2rem 0;
     }
