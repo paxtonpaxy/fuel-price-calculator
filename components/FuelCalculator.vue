@@ -46,7 +46,7 @@
 
     checkInput();
   }
-  // check if the input fields have a value for the label placement
+
   function checkInput() {
     if (distance.value !== '') {
       distanceHasvlue.value = true;
