@@ -21,8 +21,11 @@ const isFormValid = computed(() => {
 
 <template>
   <div class="fuel-calculator">
-    <div>
+    <div class="fuel-calculator__description">
       <h3>Calculate fuel cost</h3>
+      <p>
+        Calculate how much it will cost you for you trip you are planning to take. Make sure to enter all the fields, and press calculate...
+      </p>
     </div>
     <form class="fuel-calculator__form" @submit.prevent="calculate">
       <div class="input-wrapper" data-placeholder="L / km">
@@ -30,7 +33,7 @@ const isFormValid = computed(() => {
           type="number"
           required
           v-model="consumption"
-          placeholder="Liters per kilometers"
+          placeholder="Liters per kilometer"
           step="0.01"
         >
       </div>
@@ -42,7 +45,7 @@ const isFormValid = computed(() => {
           placeholder="Distance"
         >
       </div>
-      <div class="input-wrapper" data-placeholder="$">
+      <div class="input-wrapper" data-placeholder="€">
         <input
           type="number"
           required
@@ -59,9 +62,9 @@ const isFormValid = computed(() => {
     <div v-if="totalCost !== null" class="fuel-calculator__output">
       {{ totalCost }} 
     </div>
-    <div v-else class="fuel-calculator__output">
+    <div v-else class="fuel-calculator__output empty">
       <p>
-        Enter the data ablove please...
+        Enter the numbers above please...
       </p>
     </div>
   </div>
@@ -71,7 +74,7 @@ const isFormValid = computed(() => {
 @keyframes fadeInLeftToRight {
   0% {
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translateX(-30px);
   }
   100% {
     opacity: 1;
@@ -85,28 +88,34 @@ const isFormValid = computed(() => {
   align-items: center;
   margin-top: 2rem;
   gap: 3rem;
-  width: 100%;
+  width: 80dvw;
 
-  h3 {
-    color: #fff;
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    word-break: break-word;
+    color: #e4e4e4;
+    width: 100%;
   }
   
   &__form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    width: 80dvw;
+    width: 100%;
 
     .input-wrapper {
-      &:has(input:focus)::after {
+      position: relative;
+      height: auto;
+      width: auto;
+
+      &:has(input:focus)::after,
+      &:has(input:required:valid)::after {
         opacity: 1;
         animation: fadeInLeftToRight 0.5s ease-in-out forwards;
         color: #e4e4e4;
       }
-
-      position: relative;
-      height: auto;
-      width: auto;
 
       &::after {
         content: attr(data-placeholder);
@@ -143,7 +152,7 @@ const isFormValid = computed(() => {
         }
 
         &:valid {
-          border-color: #2bca40;
+          border: 1px solid #e4e4e4;
         }
       }
     }
@@ -155,7 +164,7 @@ const isFormValid = computed(() => {
       color: #fff;
       font-family: inherit;
       background-color: transparent;
-      border: 1px solid #555555;
+      border: 1px solid #e4e4e4;
       transition: all 200ms ease-in-out;
 
 
@@ -172,7 +181,7 @@ const isFormValid = computed(() => {
   }
 
   &__output {
-    width: 80dvw;
+    width: 100%;
     padding: 12px 16px;
     border-radius: 8px;
     color: #fff;
@@ -183,6 +192,22 @@ const isFormValid = computed(() => {
     p {
       font-size: 14px;
     }
+  }
+
+  &__output.empty {
+    color: #555555;
+  }
+}
+
+@media  screen and (min-width: 768px) {
+  .fuel-calculator {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    max-width: 768px;
+    border: 1px solid #555555;
+    border-radius: 0.4rem;
+    box-shadow: 2px 2px 14px #000000;
+    padding: 2rem;
   }
 }
 </style>
