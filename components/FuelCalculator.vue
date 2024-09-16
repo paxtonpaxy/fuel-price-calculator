@@ -206,7 +206,6 @@ const isFormValid = computed(() => {
     max-width: 768px;
     border: 1px solid #555555;
     border-radius: 0.4rem;
-    box-shadow: 2px 2px 14px #000000;
     padding: 2rem;
   }
 }
