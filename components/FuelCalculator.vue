@@ -4,14 +4,21 @@ import { ref } from 'vue';
 const consumption = ref(null);
 const distance = ref(null);
 const price = ref(null);
-const totalCost = ref(null)
+const totalCost = ref(null);
+const loading = ref(false);
 
 const calculate = () => {
-  if (consumption.value && distance.value && price.value) {
-    totalCost.value = (distance.value / 100) * consumption.value * price.value;
-  } else {
-    totalCost.value = null;
-  }
+  loading.value = true;
+  // setTimeout(() => {
+    
+
+  //   if (consumption.value && distance.value && price.value) {
+  //     totalCost.value = (distance.value / 100) * consumption.value * price.value;
+  //     loading.value = false;
+  //   } else {
+  //     totalCost.value = null;
+  //   }
+  // }, 2000);
 }
 
 const isFormValid = computed(() => {
@@ -59,7 +66,10 @@ const isFormValid = computed(() => {
         Calculate
       </button>
     </form>
-    <div v-if="totalCost !== null" class="fuel-calculator__output">
+    <div v-if="loading" class="fuel-calculator__output loading">
+      <Loader />
+    </div>
+    <div v-else-if="totalCost !== null" class="fuel-calculator__output">
       {{ totalCost }} <span> € </span>
     </div>
     <div v-else class="fuel-calculator__output empty">
@@ -197,6 +207,10 @@ const isFormValid = computed(() => {
   &__output.empty {
     border: 1px solid #555555;
     color: #555555;
+  }
+
+  &__output.loading {
+    border: 1px solid #555555;
   }
 }
 
