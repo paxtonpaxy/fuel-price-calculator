@@ -24,11 +24,11 @@ const isFormValid = computed(() => {
     <div class="fuel-calculator__description">
       <h3>Calculate fuel cost</h3>
       <p>
-        Calculate how much it will cost you for you trip you are planning to take. Make sure to enter all the fields, and press calculate...
+        Calculate how much it will cost you for you trip you are planning to take. Make sure to enter all the fields, and press calculate.
       </p>
     </div>
     <form class="fuel-calculator__form" @submit.prevent="calculate">
-      <div class="input-wrapper" data-placeholder="L / km">
+      <div class="input-wrapper" data-placeholder="l / km">
         <input
           type="number"
           required
@@ -60,7 +60,7 @@ const isFormValid = computed(() => {
       </button>
     </form>
     <div v-if="totalCost !== null" class="fuel-calculator__output">
-      {{ totalCost }} 
+      {{ totalCost }} <span> € </span>
     </div>
     <div v-else class="fuel-calculator__output empty">
       <p>
@@ -114,7 +114,7 @@ const isFormValid = computed(() => {
       &:has(input:required:valid)::after {
         opacity: 1;
         animation: fadeInLeftToRight 0.5s ease-in-out forwards;
-        color: #e4e4e4;
+        color: #a5a5a5;
       }
 
       &::after {
@@ -123,7 +123,7 @@ const isFormValid = computed(() => {
         width: fit-content;
         top: 12px;
         right: 16px;
-        color: #e4e4e4;
+        color: #a5a5a5;
         transition: all 200ms;
         pointer-events: none;
         opacity: 0;
@@ -187,7 +187,7 @@ const isFormValid = computed(() => {
     color: #fff;
     font-family: inherit;
     background-color: transparent;
-    border: 1px solid #555555;
+    border: 1px solid #e4e4e4;
 
     p {
       font-size: 14px;
@@ -195,6 +195,7 @@ const isFormValid = computed(() => {
   }
 
   &__output.empty {
+    border: 1px solid #555555;
     color: #555555;
   }
 }
