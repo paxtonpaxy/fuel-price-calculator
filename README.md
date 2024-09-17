@@ -1,75 +1,57 @@
-# Nuxt 3 Minimal Starter
+# Fuel Cost Calculator
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This is a Nuxt.js application that helps you calculate the cost of fuel based on mileage, distance, and fuel price.
 
-## Setup
+## Features
 
-Make sure to install the dependencies:
+- Input mileage (how much fuel your car consumes)
+- Input distance to travel
+- Input fuel price per unit
+- Calculate the total fuel cost for the trip
+
+## Installation
+
+1. Clone the repository:
 
 ```bash
-# npm
+git clone https://github.com/yourusername/fuel-app.git
+```
+
+2. Navigate to the project directory:
+
+```bash
+cd fuel-app
+```
+
+3. Install dependencies:
+
+```bash
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+## Usage
 
-Start the development server on `http://localhost:3000`:
+1. Start the development server:
 
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+2. Open your browser and navigate to `http://localhost:3000`
 
-Build the application for production:
+## Build for Production
+
+To build the application for production, run:
 
 ```bash
-# npm
 npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+npm run start
 ```
 
-Locally preview production build:
+## Contributing
 
-```bash
-# npm
-npm run preview
+Contributions are welcome! Please open an issue or submit a pull request.
 
-# pnpm
-pnpm run preview
+## License
 
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+This project is licensed under the MIT License.
