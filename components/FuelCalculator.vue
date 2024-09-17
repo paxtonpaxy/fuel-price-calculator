@@ -9,16 +9,14 @@ const loading = ref(false);
 
 const calculate = () => {
   loading.value = true;
-  // setTimeout(() => {
-    
-
-  //   if (consumption.value && distance.value && price.value) {
-  //     totalCost.value = (distance.value / 100) * consumption.value * price.value;
-  //     loading.value = false;
-  //   } else {
-  //     totalCost.value = null;
-  //   }
-  // }, 2000);
+  setTimeout(() => {
+    if (consumption.value && distance.value && price.value) {
+      totalCost.value = (distance.value / 100) * consumption.value * price.value;
+      loading.value = false;
+    } else {
+      totalCost.value = null;
+    }
+  }, 1000);
 }
 
 const isFormValid = computed(() => {
@@ -190,6 +188,10 @@ const isFormValid = computed(() => {
     }
   }
 
+  .loading {
+    min-height: 100px;
+  }
+
   &__output {
     width: 100%;
     padding: 12px 16px;
@@ -211,6 +213,8 @@ const isFormValid = computed(() => {
 
   &__output.loading {
     border: 1px solid #555555;
+    display: flex;
+    justify-content: center;
   }
 }
 

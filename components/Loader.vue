@@ -28,6 +28,7 @@
   left: 50%;
   margin-top: -5px;
   margin-left: -5px;
+  border-radius: 4px;
 }
 
 #sq1 {
