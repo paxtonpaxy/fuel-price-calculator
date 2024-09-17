@@ -11,13 +11,33 @@ const calculate = () => {
   loading.value = true;
   setTimeout(() => {
     if (consumption.value && distance.value && price.value) {
-      totalCost.value = (distance.value / 100) * consumption.value * price.value;
+      totalCost.value = ((distance.value / 100) * consumption.value * price.value).toFixed(2);
       loading.value = false;
     } else {
       totalCost.value = null;
     }
   }, 1000);
 }
+
+const clearInputFields = () => {
+  consumption.value = null;
+  distance.value = null;
+  price.value = null;
+};
+
+const inputValidation = (e) => {
+  const input = e.target;
+  if (input.value.length > 4) {
+    input.value = input.value.slice(0, 5);
+  }  
+};
+
+const preventInvalidChars = (e) => {
+  const invalidChars = ["e", "E", "+", "-"];
+  if (invalidChars.includes(e.key)) {
+    e.preventDefault();
+  }
+};
 
 const isFormValid = computed(() => {
   return consumption.value && distance.value && price.value;
@@ -36,9 +56,11 @@ const isFormValid = computed(() => {
       <div class="input-wrapper" data-placeholder="l / km">
         <input
           type="number"
+          @input="inputValidation"
+          @keydown="preventInvalidChars"
           required
           v-model="consumption"
-          placeholder="Liters per kilometer"
+          placeholder="Liters per kilometer ~ 7.5"
           step="0.01"
         >
       </div>
@@ -46,17 +68,19 @@ const isFormValid = computed(() => {
         <input
           type="number"
           required
+          @keydown="preventInvalidChars"
           v-model="distance"
-          placeholder="Distance"
+          placeholder="Distance ~ 450"
         >
       </div>
       <div class="input-wrapper" data-placeholder="€">
         <input
           type="number"
           required
+          @keydown="preventInvalidChars"
           v-model="price"
           step="0.01"
-          placeholder="Fuel price"
+          placeholder="Fuel price ~ 1.9 "
         >
       </div>
       
@@ -68,7 +92,12 @@ const isFormValid = computed(() => {
       <Loader />
     </div>
     <div v-else-if="totalCost !== null" class="fuel-calculator__output">
-      {{ totalCost }} <span> € </span>
+      <div>
+        {{ totalCost }} <span> € </span>
+      </div>
+      <div>
+        <button @click="clearInputFields" class="fuel-calculator__output--button"> Clear </button>
+      </div>
     </div>
     <div v-else class="fuel-calculator__output empty">
       <p>
@@ -193,6 +222,8 @@ const isFormValid = computed(() => {
   }
 
   &__output {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
     padding: 12px 16px;
     border-radius: 8px;
@@ -200,6 +231,17 @@ const isFormValid = computed(() => {
     font-family: inherit;
     background-color: transparent;
     border: 1px solid #e4e4e4;
+
+    &--button {
+      cursor: pointer;
+      font-size: 16px;
+      letter-spacing: 1px;
+      color: #e4e4e4;
+      text-decoration: underline;
+      text-underline-position: under;
+      border: none;
+      background: transparent;
+    }
 
     p {
       font-size: 14px;
