@@ -47,10 +47,7 @@ const isFormValid = computed(() => {
 <template>
   <div class="fuel-calculator">
     <div class="fuel-calculator__description">
-      <h3>Calculate fuel cost</h3>
-      <p>
-        Calculate how much it will cost you for you trip you are planning to take. Make sure to enter all the fields, and press calculate.
-      </p>
+      <h2>Fuel cost calculator</h2>
     </div>
     <form class="fuel-calculator__form" @submit.prevent="calculate">
       <div class="input-wrapper" data-placeholder="l / km">
@@ -80,9 +77,14 @@ const isFormValid = computed(() => {
           @keydown="preventInvalidChars"
           v-model="price"
           step="0.01"
-          placeholder="Fuel price ~ 1.9 "
+          placeholder="Fuel price per liter ~ 1.9"
         >
       </div>
+      <div class="fuel-calculator__description">
+        <p>
+          Calculate how much will fuel cost you for your trip. Make sure to enter all the fields, and press calculate please...
+        </p>
+    </div>
       
       <button class="fuel-calculator__form--button" type="submit" :disabled="!isFormValid">
         Calculate
@@ -134,6 +136,10 @@ const isFormValid = computed(() => {
     word-break: break-word;
     color: #e4e4e4;
     width: 100%;
+
+    p {
+      color: #a5a5a5;
+    }
   }
   
   &__form {
