@@ -16,5 +16,6 @@
   },
   "devDependencies": {
     "sass": "^1.77.0"
-  }
+  },
+  "version": "1.0.0"
 }
