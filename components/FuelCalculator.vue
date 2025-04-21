@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 
 const consumption = ref(null);
 const distance = ref(null);
@@ -11,25 +11,30 @@ const calculate = () => {
   loading.value = true;
   setTimeout(() => {
     if (consumption.value && distance.value && price.value) {
-      totalCost.value = ((distance.value / 100) * consumption.value * price.value).toFixed(2);
+      totalCost.value = (
+        (distance.value / 100) *
+        consumption.value *
+        price.value
+      ).toFixed(2);
       loading.value = false;
     } else {
       totalCost.value = null;
     }
   }, 1000);
-}
+};
 
 const clearInputFields = () => {
   consumption.value = null;
   distance.value = null;
   price.value = null;
+  totalCost.value = null;
 };
 
 const inputValidation = (e) => {
   const input = e.target;
   if (input.value.length > 4) {
     input.value = input.value.slice(0, 5);
-  }  
+  }
 };
 
 const preventInvalidChars = (e) => {
@@ -59,7 +64,7 @@ const isFormValid = computed(() => {
           v-model="consumption"
           placeholder="Liters per kilometer ~ 7.5"
           step="0.01"
-        >
+        />
       </div>
       <div class="input-wrapper" data-placeholder="km">
         <input
@@ -68,7 +73,7 @@ const isFormValid = computed(() => {
           @keydown="preventInvalidChars"
           v-model="distance"
           placeholder="Distance ~ 450"
-        >
+        />
       </div>
       <div class="input-wrapper" data-placeholder="€">
         <input
@@ -78,15 +83,20 @@ const isFormValid = computed(() => {
           v-model="price"
           step="0.01"
           placeholder="Fuel price per liter ~ 1.9"
-        >
+        />
       </div>
       <div class="fuel-calculator__description">
         <p>
-          Calculate how much will fuel cost you for your trip. Make sure to enter all the fields, and press calculate please...
+          Calculate how much will fuel cost you for your trip. Make sure to
+          enter all the fields, and press calculate please...
         </p>
-    </div>
-      
-      <button class="fuel-calculator__form--button" type="submit" :disabled="!isFormValid">
+      </div>
+
+      <button
+        class="fuel-calculator__form--button"
+        type="submit"
+        :disabled="!isFormValid"
+      >
         Calculate
       </button>
     </form>
@@ -94,17 +104,23 @@ const isFormValid = computed(() => {
       <Loader />
     </div>
     <div v-else-if="totalCost !== null" class="fuel-calculator__output">
-      <div>
-        {{ totalCost }} <span> € </span>
+      <div class="fuel-calculator__output-text">
+        <p>Avg. consumption: {{ consumption }} l/km</p>
+        <p>Distance: {{ distance }} km</p>
+        <p>Price per liter: {{ price }} €</p>
       </div>
+      <div>Total cost: {{ totalCost }} <span> € </span></div>
       <div>
-        <button @click="clearInputFields" class="fuel-calculator__output--button"> Clear </button>
+        <button
+          @click="clearInputFields"
+          class="fuel-calculator__output--button"
+        >
+          Clear
+        </button>
       </div>
     </div>
     <div v-else class="fuel-calculator__output empty">
-      <p>
-        Enter the numbers above please...
-      </p>
+      <p>Enter the numbers above please...</p>
     </div>
   </div>
 </template>
@@ -141,7 +157,7 @@ const isFormValid = computed(() => {
       color: #a5a5a5;
     }
   }
-  
+
   &__form {
     display: flex;
     flex-direction: column;
@@ -210,7 +226,6 @@ const isFormValid = computed(() => {
       border: 1px solid #e4e4e4;
       transition: all 200ms ease-in-out;
 
-
       &:hover:not(:disabled) {
         cursor: pointer;
         background: linear-gradient(45deg, #202020, #252525);
@@ -229,7 +244,9 @@ const isFormValid = computed(() => {
 
   &__output {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    gap: 0.5rem;
     width: 100%;
     padding: 12px 16px;
     border-radius: 8px;
@@ -252,10 +269,18 @@ const isFormValid = computed(() => {
     p {
       font-size: 14px;
     }
+
+    &-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.5);
+    }
   }
 
   &__output.empty {
-    border: 1px solid #555555;
+    border: none;
     color: #555555;
   }
 
@@ -266,7 +291,7 @@ const isFormValid = computed(() => {
   }
 }
 
-@media  screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .fuel-calculator {
     margin-top: 4rem;
     margin-bottom: 4rem;
